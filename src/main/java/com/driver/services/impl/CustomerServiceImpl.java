@@ -50,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Driver driver = null;
 		int id = Integer.MAX_VALUE;
 		for (Driver driver1 : driverList){
-			if(driver1.getDriverId() < id && driver1.getCab().isAvaibble()){
+			if(driver1.getDriverId() < id && driver1.getCab().isAvaibale()){
 				id = driver1.getDriverId();
 				driver = driver1;
 			}
@@ -74,7 +74,7 @@ public class CustomerServiceImpl implements CustomerService {
 		List<TripBooking> tripBookingList = driver.getTripBookingList();
 		tripBookingList.add(tripBooking);
 		driver.setTripBookingList(tripBookingList);
-		driver.getCab().setAvaibble(false);
+		driver.getCab().setAvaibale(false);
 
 		driverRepository2.save(driver);
 
@@ -89,7 +89,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 		Driver driver = tripBooking.getDriver();
 
-		driver.getCab().setAvaibble(true);
+		driver.getCab().setAvaibale(true);
 
 		List<TripBooking> tripBookingList = driver.getTripBookingList();
 		tripBookingList.remove(tripBooking);
@@ -109,7 +109,7 @@ public class CustomerServiceImpl implements CustomerService {
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
 
 		Driver driver = tripBooking.getDriver();
-		driver.getCab().setAvaibble(true);
+		driver.getCab().setAvaibale(true);
 
 		List<TripBooking> tripBookingList = driver.getTripBookingList();
 		tripBookingList.remove(tripBooking);
